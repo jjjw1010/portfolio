@@ -37,7 +37,27 @@
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       text-align: center;
-      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .project:hover::before {
+      opacity: 1;
     }
 
     .project img {
@@ -48,19 +68,36 @@
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .project-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .project:hover .project-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .project h3 {
-      margin-top: 10px;
       font-size: 24px;
-      color: #333;
+      margin: 10px 0;
     }
 
     .project p {
       font-size: 16px;
-      color: #777;
+      line-height: 1.5;
     }
 
-    .project:hover {
-      transform: translateY(-10px);
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
     }
   </style>
 </head>
@@ -72,38 +109,20 @@
   <div class="container">
     <div class="project">
       <img src="project1.jpg" alt="GameHub">
-      <h3>GameHub</h3>
-      <p>
-        Developing GameHub, a community-driven platform for casual gamers to discover, review, and discuss games,
-        featuring AI-powered recommendations and a modern, minimalistic UI/UX.
-        Utilizing Next.js, TypeScript, SASS, and React Query to create a responsive and visually appealing user interface.
-        Integrating RESTful architecture, PostgreSQL, and AI algorithms to deliver personalized game recommendations
-        based on user preferences, enhancing user experience.
-      </p>
+      <div class="project-content">
+        <h3>GameHub</h3>
+        <p>
+          Developing GameHub, a community-driven platform for casual gamers to discover, review, and discuss games,
+          featuring AI-powered recommendations and a modern, minimalistic UI/UX.
+          Utilizing Next.js, TypeScript, SASS, and React Query to create a responsive and visually appealing user interface.
+          Integrating RESTful architecture, PostgreSQL, and AI algorithms to deliver personalized game recommendations
+          based on user preferences, enhancing user experience.
+        </p>
+      </div>
     </div>
 
-    <div class="project">
-      <img src="project2.jpg" alt="Compiler in Java">
-      <h3>Compiler in Java</h3>
-      <p>
-        Collaborated with a team of four members to design a fully functional Eta language compiler in Java.
-        Took a leading role in the creation of comprehensive test cases, contributing over 300 unique test cases for
-        thorough evaluation of both the front-end and back-end of the compiler.
-        Contributed to the front-end development by assisting in designing and implementing lexical analysis, syntactic
-        analysis, semantic analysis, and intermediate code generation.
-        Contributed to the back-end development by assisting in machine dependent optimization like register allocation.
-      </p>
-    </div>
+    <!-- Add more projects here -->
 
-    <div class="project">
-      <img src="project3.jpg" alt="Digit-Pair Image Classification Challenge">
-      <h3>Digit-Pair Image Classification Challenge</h3>
-      <p>
-        Developed a robust machine learning model that can accurately classify handwritten digit pairs in the competition.
-        Achieved 9th place out of 55 participants in the competition with a model accuracy of 0.57417 by implementing
-        complex Convolutional Neural Network model and advanced machine learning features like learning rate and loss function.
-      </p>
-    </div>
   </div>
 
   <footer>
